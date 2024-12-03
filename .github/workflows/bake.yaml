@@ -13,12 +13,10 @@ jobs:
       - name: Checkout Repo A
         uses: actions/checkout@v3
 
-      # - name: Configure SSH Access for Private Modules
-      #   run: |
-      #     mkdir -p ~/.ssh
-      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-      #     chmod 600 ~/.ssh/id_ed25519
-      #     ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - name: Set Up Git Credentials for Private Modules
+        run: |
+          git config --global url."https://${{ secrets.TOKEN }}@github.com/".insteadOf "https://github.com/"
+
 
       - name: Set Up Go Environment
         run: |
