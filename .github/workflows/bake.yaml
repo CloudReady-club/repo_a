@@ -22,7 +22,7 @@ jobs:
 
       - name: Set Up Go Environment
         run: |
-          o env -w GOPRIVATE="github.com/CloudReady-club/*"
+          go env -w GOPRIVATE="github.com/CloudReady-club/*"
 
       - name: Install Dependencies and Vendor
         run: |
