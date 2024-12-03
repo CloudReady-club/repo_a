@@ -1,0 +1,6 @@
+# github.com/CloudReady-club/repo_b v0.0.0-20241203001733-32c069aea32a
+## explicit; go 1.21.3
+github.com/CloudReady-club/repo_b/hello
+# github.com/CloudReady-club/repo_c v0.0.0-20241203001758-5497e41aeea2
+## explicit; go 1.21.3
+github.com/CloudReady-club/repo_c/weather

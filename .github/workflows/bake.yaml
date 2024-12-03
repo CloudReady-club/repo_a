@@ -1,0 +1,34 @@
+name: Build and Vendor Go Modules
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo A
+        uses: actions/checkout@v3
+
+      - name: Configure SSH Access for Private Modules
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Set Up Go Environment
+        run: |
+          go env -w GOPRIVATE=github.com/your-org/repo-b,github.com/your-org/repo-c
+
+      - name: Install Dependencies and Vendor
+        run: |
+          go mod tidy
+          go mod vendor
+
+      - name: Build Project
+        run: |
+          go build -o app .
