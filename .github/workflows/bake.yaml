@@ -15,7 +15,7 @@ jobs:
 
       - name: Set Up Git Credentials for Private Modules
         run: |
-          git config --global url."https://${{ secrets.TOKEN }}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://${{ secrets.TOKEN }}@github.com/CloudReady-club/".insteadOf "https://github.com/CloudReady-club/"
 
 
       - name: Set Up Go Environment
