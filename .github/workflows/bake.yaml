@@ -1,5 +1,10 @@
 name: Build and Vendor Go Modules
 
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
+
+
 on:
   push:
     branches:
@@ -12,6 +17,13 @@ jobs:
     steps:
       - name: Checkout Repo A
         uses: actions/checkout@v3
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v4.1.0
+        with:
+          role-to-assume: arn:aws:iam::816069145650:role/github-test
+          role-session-name: samplerolesession
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Set Up Git Credentials for Private Modules
         run: |
