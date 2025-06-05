@@ -26,20 +26,20 @@ jobs:
           role-session-name: samplerolesession
           aws-region: ca-central-1
 
-      - name: Set Up Git Credentials for Private Modules
-        run: |
-          git config --global url."https://${{ secrets.TOKEN }}@github.com/CloudReady-club/".insteadOf "https://github.com/CloudReady-club/"
+      # - name: Set Up Git Credentials for Private Modules
+      #   run: |
+      #     git config --global url."https://${{ secrets.TOKEN }}@github.com/CloudReady-club/".insteadOf "https://github.com/CloudReady-club/"
 
 
-      - name: Set Up Go Environment
-        run: |
-          go env -w GOPRIVATE="github.com/CloudReady-club/*"
+      # - name: Set Up Go Environment
+      #   run: |
+      #     go env -w GOPRIVATE="github.com/CloudReady-club/*"
 
-      - name: Install Dependencies and Vendor
-        run: |
-          go mod tidy
-          go mod vendor
+      # - name: Install Dependencies and Vendor
+      #   run: |
+      #     go mod tidy
+      #     go mod vendor
 
-      - name: Build Project
-        run: |
-          go build -o app .
+      # - name: Build Project
+      #   run: |
+      #     go build -o app .
